@@ -1,5 +1,6 @@
 # Ansible Tags and Roles Notes
 
+- [Roles](#roles)
 - [No tag](#no-tag)
 - [Tag `dep`](#tag-dep)
 - [Tag `dep_task`](#tag-dep_task)
@@ -15,6 +16,22 @@
 - [Tag `test_block`](#tag-test_block)
 - [Tag `test_block_task1`](#tag-test_block_task1)
 - [References](#references)
+
+### Roles
+
+When a role is imported/included, the first thing that it will do is resolve dependencies defined under `meta/main.yml`. After depedencies are taken care of, it will proceed to `tasks/main.yml` but just before that, it will load variables defined under both `vars/` and `defaults/` directories. If a particular task involve local file, such as `ansible.builtin.copy`, `ansible.builtin.unarchive`, `ansible.builtin.template`, etc., the task will look into `files/` or `templates/` directory when we only specify the file name without the full path nor relative path.
+
+```YAML
+- name: Copy
+  ansible.builtin.copy:
+    src: my-file # the task will look under `files/` directory
+    ...
+
+- name: Copy
+  ansible.builtin.copy:
+    src: ./my-file # the task will resolve the path as specified
+    ...
+```
 
 ### No tag
 
