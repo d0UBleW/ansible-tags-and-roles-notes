@@ -1,5 +1,21 @@
 # Ansible Tags and Roles Notes
 
+- [No tag](#no-tag)
+- [Tag `dep`](#tag-dep)
+- [Tag `dep_task`](#tag-dep_task)
+- [Tag `test`](#tag-test)
+- [Tag `test_task`](#tag-test_task)
+- [Tag `test_inc`](#tag-test_inc)
+- [Tag `test_inc_task`](#tag-test_inc_task)
+- [Tag `test_inc`, `test_inc_task`](#tag-test_inc-test_inc_task)
+- [Tag `test_imp`](#tag-test_imp)
+- [Tag `test_imp_task`](#tag-test_imp_task)
+- [Tag `test_incfalse`](#tag-test_incfalse)
+- [Tag `test_incfalse_task`](#tag-test_incfalse_task)
+- [Tag `test_block`](#tag-test_block)
+- [Tag `test_block_task1`](#tag-test_block_task1)
+- [References](#references)
+
 ### No tag
 
 ```sh
@@ -186,7 +202,7 @@ localhost                  : ok=2    changed=0    unreachable=0    failed=0    s
 
 ### Tag `test`
 
-For this command, since the role `test` has its dependencies defined under `roles/test/meta/main.yml`, it would run the dependency first before executing tasks in `roles/test/tasks/main.yml`. [Code snippet 2](#code-snippet-2) provides rough estimation on how the `main.yml` file would look like. Notice that the `include_tasks` is still there but the `import_tasks` is substituted. This is the main difference between the two. The `include_tasks` task would only be substituted with the tasks in the specified file when it mets the condition. However, when this tasks is included, the tags specified under `include_tasks` would not be inherited (see the [reference](#references)). One thing to note is that tasks under `block` would inherit whatever tags specified in the `block` level.
+For this command, since the role `test` has its dependencies defined under `roles/test/meta/main.yml`, it would run the dependency first before executing tasks in `roles/test/tasks/main.yml`. [Code snippet 2](#code-snippet-2) provides rough estimation on how the `main.yml` file would look like. Notice that the `include_tasks` is still there but the `import_tasks` is substituted. This is the main difference between the two. The `include_tasks` task would only be substituted with the tasks in the specified file when it mets the condition. However, when this tasks is included, the tags specified under `include_tasks` would not be inherited (see under [references](#references) section). One thing to note is that tasks under `block` would inherit whatever tags specified in the `block` level.
 
 ###### Code Snippet 2
 
