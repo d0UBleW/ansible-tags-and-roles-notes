@@ -1,0 +1,13 @@
+---
+- name: Play
+  hosts: localhost
+  become: false
+  gather_facts: false
+  roles:
+    - role: dep
+      vars:
+        const_var: "Override const_var"
+        dyn_var1: "Override dyn_var1"
+      tags: dep
+    - role: test
+      tags: test

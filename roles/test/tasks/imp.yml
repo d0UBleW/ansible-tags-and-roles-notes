@@ -1,0 +1,5 @@
+---
+- name: Imported
+  ansible.builtin.debug:
+    msg: "Imported task"
+  tags: test_imp_task

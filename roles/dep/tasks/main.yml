@@ -1,0 +1,17 @@
+---
+- name: Debug
+  ansible.builtin.debug:
+    msg: "Dep roles"
+  tags: dep_task
+
+- name: Debug const_var
+  ansible.builtin.debug:
+    var: const_var
+
+- name: Debug dyn_var1
+  ansible.builtin.debug:
+    var: dyn_var1
+
+- name: Debug dyn_var2
+  ansible.builtin.debug:
+    var: dyn_var2

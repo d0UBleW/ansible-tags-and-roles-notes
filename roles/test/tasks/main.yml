@@ -1,0 +1,35 @@
+---
+- name: Test
+  ansible.builtin.debug:
+    msg: "Test role"
+  tags: test_task
+
+- name: Include
+  ansible.builtin.include_tasks:
+    file: inc.yml
+  tags: test_inc
+
+- name: Import
+  ansible.builtin.import_tasks:
+    file: imp.yml
+  tags: test_imp
+
+- name: Include false
+  ansible.builtin.include_tasks:
+    file: inc_false.yml
+  tags: test_incfalse
+  when: 1 | int == 0
+
+- name: Block
+  when: 1 | int == 0
+  tags: test_block
+  block:
+    - name: one
+      tags: test_block_task1
+      ansible.builtin.debug:
+        msg: "abcd"
+
+    - name: two
+      tags: test_block_task2
+      ansible.builtin.debug:
+        msg: "efgh"

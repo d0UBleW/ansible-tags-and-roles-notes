@@ -1,0 +1,4 @@
+---
+dependencies:
+  - role: dep
+    tags: test_dep

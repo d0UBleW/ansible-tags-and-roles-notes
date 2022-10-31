@@ -1,0 +1,5 @@
+---
+- name: Include from test
+  ansible.builtin.debug:
+    msg: "included"
+  tags: test_inc_task
